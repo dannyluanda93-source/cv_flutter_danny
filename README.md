@@ -16,19 +16,19 @@ Application mobile Flutter présentant le curriculum vitae, la famille et les co
 
 ### Connexion
 
-![Page de connexion](screenshots/formulaire.png)
+![Page de connexion](screenshots/formulaire.png?raw=1)
 
 ### CV
 
-![Page CV](screenshots/cv.png)
+![Page CV](screenshots/cv.png?raw=1)
 
 ### Famille
 
-![Page Famille](screenshots/famille.png)
+![Page Famille](screenshots/famille.png?raw=1)
 
 ### Contact
 
-![Page Contact](screenshots/contact.png)
+![Page Contact](screenshots/contact.png?raw=1)
 
 ## Exécution
 
