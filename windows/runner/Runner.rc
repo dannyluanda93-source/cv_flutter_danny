@@ -69,7 +69,7 @@ IDI_APP_ICON            ICON                    "resources\\app_icon.ico"
 #if defined(FLUTTER_VERSION)
 #define VERSION_AS_STRING FLUTTER_VERSION
 #else
-#define VERSION_AS_STRING "1.0.0"
+#define VERSION_AS_STRING "1.0.0.0"
 #endif
 
 VS_VERSION_INFO VERSIONINFO
@@ -83,19 +83,19 @@ VS_VERSION_INFO VERSIONINFO
 #endif
  FILEOS VOS__WINDOWS32
  FILETYPE VFT_APP
- FILESUBTYPE 0x0L
+ FILESUBTYPE VFT2_UNKNOWN
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.olivier" "\0"
-            VALUE "FileDescription", "cv_flutter_olivier" "\0"
+            VALUE "CompanyName", "com.danny" "\0"
+            VALUE "FileDescription", "cv_flutter_danny" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cv_flutter_olivier" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.olivier. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cv_flutter_olivier.exe" "\0"
-            VALUE "ProductName", "cv_flutter_olivier" "\0"
+            VALUE "InternalName", "cv_flutter_danny" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 com.danny. All rights reserved." "\0"
+            VALUE "OriginalFilename", "cv_flutter_danny.exe" "\0"
+            VALUE "ProductName", "cv_flutter_danny" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

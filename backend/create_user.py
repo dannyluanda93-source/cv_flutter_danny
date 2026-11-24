@@ -30,7 +30,7 @@ def main():
                 SET password_hash = EXCLUDED.password_hash,
                     nom = EXCLUDED.nom,
                     role = EXCLUDED.role
-            """, (email.lower(), password_hash, "MALI NDUHIRA Olivier", "admin"))
+            """, (email.lower(), password_hash, "Danny Luanda", "admin"))
         connection.commit()
         print("Utilisateur créé ou mis à jour avec succès.")
     finally:

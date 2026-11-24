@@ -6,8 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:cv_flutter_olivier/main.dart';
+import 'package:cv_flutter_danny/main.dart';
 
 void main() {
   testWidgets('Application démarre sur une interface', (WidgetTester tester) async {

@@ -1,4 +1,4 @@
-package com.olivier.cv_flutter_olivier
+package com.danny.cv_flutter_danny
 
 import io.flutter.embedding.android.FlutterActivity
 
