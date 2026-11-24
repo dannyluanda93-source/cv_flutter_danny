@@ -1,82 +1,135 @@
-# CV Flutter — TP2
+# Application CV — Danny Luanda
 
-Application Flutter évoluée avec une API REST Flask, une authentification JWT/bcrypt et une base PostgreSQL Supabase.
+Application Flutter présentant le CV professionnel, les pages Famille et Contact, ainsi qu’un système de connexion sécurisé.
 
-## Architecture
+- **Projet GitHub :** https://github.com/dannyluanda93-source/cv_flutter_danny
+- **Compte de démonstration :** `dannyluanda93@gmail.com`
+- **Mot de passe :** `1234`
+
+## TP1 — Application Flutter
+
+Le premier travail pratique concerne principalement l’interface utilisateur et les fonctionnalités principales de l’application.
+
+### Pages réalisées
+
+- Formulaire de connexion.
+- CV avec photo, profil, formation, expérience, compétences et langues.
+- Page Famille permettant l’ajout, la modification et la suppression des membres.
+- Page Contact avec téléphone, adresse e-mail et localisation.
+- Menu de navigation mobile et menu latéral.
+- Déconnexion de l’utilisateur.
+
+### Technologies utilisées
+
+- Flutter
+- Dart
+- Material 3
+- SharedPreferences
+- Package HTTP
+- Package URL Launcher
+
+### Captures du TP1
+
+#### Page de connexion
+
+![Page de connexion](screenshots/formulaire.png)
+
+#### Page CV
+
+![Page CV](screenshots/cv.png)
+
+#### Page Famille
+
+![Page Famille](screenshots/famille.png)
+
+#### Page Contact
+
+![Page Contact](screenshots/contact.png)
+
+## TP2 — Base de données, backend et démonstration
+
+Le deuxième travail pratique concerne l’API REST, l’authentification, PostgreSQL/Supabase et la démonstration complète.
+
+### Base de données
+
+La base utilisée est PostgreSQL, hébergée sur Supabase. Le script SQL se trouve dans :
 
 ```text
-cv_flutter_olivier/
-├── lib/
-│   ├── main.dart
-│   ├── services/api_service.dart
-│   └── pages/
-│       ├── login_page.dart
-│       ├── famille_page.dart
-│       ├── cv_page.dart
-│       ├── contact_page.dart
-│       └── main_navigation.dart
-├── backend/
-│   ├── app.py
-│   ├── config.py
-│   ├── create_user.py
-│   └── requirements.txt
-├── database/schema.sql
-├── assets/images/
-└── screenshots/
+database/schema.sql
 ```
 
-## Technologies
+Il contient les tables suivantes :
 
-- Frontend : Flutter / Dart
-- Backend : Python / Flask / Flask-CORS
-- Base de données : PostgreSQL hébergée sur Supabase
-- Authentification : JWT, bcrypt
-- Flutter : http, shared_preferences
+- `users` : utilisateurs et mots de passe cryptés.
+- `famille` : membres de famille.
+- `cv_profils` : informations principales du CV.
+- `formations` : parcours scolaire.
+- `experiences` : expériences professionnelles.
+- `competences` : compétences techniques et professionnelles.
+- `langues` : langues parlées.
+- `centres_interet` : domaines recherchés.
+- `contacts` : coordonnées de contact.
 
-## Base de données Supabase
+### Configuration de Supabase
 
-1. Créez un projet Supabase.
-2. Ouvrez **SQL Editor**.
-3. Copiez-collez intégralement `database/schema.sql` puis sélectionnez **Run**.
-4. Depuis les paramètres du projet, récupérez la chaîne PostgreSQL.
-5. Configurez `DATABASE_URL` dans `backend/config.py` ou dans un fichier `.env`.
+1. Ouvrir le projet Supabase.
+2. Copier le contenu de `database/schema.sql` dans SQL Editor.
+3. Exécuter le script.
+4. Récupérer l’URL PostgreSQL depuis les paramètres du projet.
+5. Copier `backend/.env.example` vers `backend/.env`.
+6. Ajouter l’URL de la base et une clé secrète JWT dans `backend/.env`.
 
-Exemple :
+Le fichier `.env` ne doit pas être publié sur GitHub.
 
 ```text
-postgresql://postgres:MON_MOT_DE_PASSE@aws-0-eu-central-1.pooler.supabase.com:6543/postgres
+DATABASE_URL=postgresql://UTILISATEUR:MOT_DE_PASSE@HOTE:5432/postgres
+SECRET_KEY=VOTRE_CLE_SECRETE
 ```
 
-## Identifiant de connexion
+### Backend Flask
 
-L’adresse e-mail est : `oliviernduhira@gmail.com`.
+Le backend REST se trouve dans le dossier `backend`.
 
-Le mot de passe n’est pas stocké dans Flutter. Il doit être créé dans Supabase avec :
+```text
+backend/
+├── app.py
+├── config.py
+├── create_user.py
+├── requirements.txt
+└── .env.example
+```
 
-```bash
+### API REST
+
+| Méthode | Endpoint | Authentification | Fonction |
+|---|---|---|---|
+| POST | `/api/auth/login` | Non | Connexion avec e-mail et mot de passe |
+| GET | `/api/famille` | JWT | Afficher les membres |
+| POST | `/api/famille` | JWT | Ajouter un membre |
+| PUT | `/api/famille/<id>` | JWT | Modifier un membre |
+| DELETE | `/api/famille/<id>` | JWT | Supprimer un membre |
+| GET | `/api/health` | Non | Vérifier que le serveur fonctionne |
+
+L’authentification utilise JWT pour les échanges protégés et bcrypt pour le stockage sécurisé des mots de passe.
+
+### Création de l’utilisateur avec `create_user.py`
+
+Depuis le dossier racine :
+
+```powershell
 cd backend
 python create_user.py
 ```
 
-Saisissez l’e-mail et le mot de passe lorsque le programme les demande.
+À l’invite :
 
-## API REST
+- **E-mail :** `dannyluanda93@gmail.com`
+- **Mot de passe :** `1234`
+- **Confirmation :** `1234`
 
-| Méthode | Endpoint | Authentification | Description |
-|---|---|---|---|
-| POST | `/api/auth/login` | Non | Vérifie l’e-mail et le mot de passe avec bcrypt |
-| GET | `/api/famille` | JWT | Liste les membres |
-| POST | `/api/famille` | JWT | Ajoute un membre |
-| PUT | `/api/famille/<id>` | JWT | Modifie un membre |
-| DELETE | `/api/famille/<id>` | JWT | Supprime un membre |
-| GET | `/api/health` | Non | Vérifie que le serveur fonctionne |
+Le script crée l’utilisateur ou met à jour son mot de passe lorsqu’il existe déjà.
 
-La connexion envoie `Authorization: Bearer <token>`.
-Le JWT est valide pendant 24 heures.
-
-## Démarrer le backend
-
-Depuis Windows :
+### Démarrer le backend
 
 ```powershell
 cd backend
@@ -86,54 +139,59 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Le backend écoute sur : `http://127.0.0.1:5000`.
+Le backend est accessible à l’adresse :
 
-Vérification :
+```text
+http://127.0.0.1:5000
+```
+
+Test de disponibilité :
 
 ```text
 http://127.0.0.1:5000/api/health
 ```
 
-## Démarrer le frontend
+## Démarrer l’application complète
 
-Depuis la racine du projet :
+1. Configurer et démarrer Supabase.
+2. Configurer `backend/.env`.
+3. Créer l’utilisateur avec `backend/create_user.py`.
+4. Démarrer Flask.
+5. Depuis la racine du projet, lancer Flutter :
 
 ```powershell
 flutter pub get
 flutter run -d chrome
 ```
 
-Au démarrage, Flutter vérifie le JWT enregistré dans `SharedPreferences`. Sans token valide, l’utilisateur reste sur la page de connexion.
+## Membres actuels de la famille
 
-## Captures d’écran
+- Danny Luanda — Moi.
+- Olive — Sœur.
+- Fabrice — Frère.
+- Grace — Sœur.
 
-### Page de connexion
+## Vidéo de démonstration — TP2
 
-![Connexion](screenshots/formulaire.png)
+La vidéo doit montrer :
 
-### Page CV
+- Le démarrage du backend Flask.
+- La connexion avec l’e-mail et le mot de passe.
+- La consultation du CV.
+- L’ajout, la modification et la suppression d’un membre.
+- La connexion à Supabase et la consultation des données enregistrées.
+- La déconnexion.
 
-![CV](screenshots/cv.png)
-
-### Page Famille
-
-![Famille](screenshots/famille.png)
-
-### Page Contact
-
-![Contact](screenshots/contact.png)
-
-## Vidéo de démonstration
-
-Insérez ici le lien YouTube de votre démonstration :
+Lien de démonstration :
 
 ```text
-https://www.youtube.com/watch?v=LIEN_DE_VOTRE_VIDEO
+LIEN_YOUTUBE_DE_LA_DEMONSTRATION
 ```
 
 ## Sécurité
 
-- Aucun mot de passe permanent n’est écrit dans le code Flutter.
-- Les mots de passe sont stockés sous forme de hash bcrypt.
-- Les pages nécessitent un JWT valide.
-- Remplacez `SECRET_KEY_TEST_A_REMPLACER` par une clé secrète forte en production.
+- Les mots de passe ne sont pas stockés en clair dans la base.
+- Les mots de passe sont hachés avec bcrypt.
+- Les endpoints protégés exigent un token JWT.
+- `backend/.env` est exclu du dépôt Git avec `.gitignore`.
+- Une clé secrète différente doit être utilisée en production.
