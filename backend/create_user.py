@@ -7,8 +7,8 @@ from config import DATABASE_URL
 
 
 def main():
-    email = input("E-mail [oliviernduhira@gmail.com]: ").strip()
-    email = email or "oliviernduhira@gmail.com"
+    email = input("E-mail [dannyluanda93@gmail.com]: ").strip()
+    email = email or "dannyluanda93@gmail.com"
 
     password = getpass.getpass("Mot de passe: ")
     if not password:

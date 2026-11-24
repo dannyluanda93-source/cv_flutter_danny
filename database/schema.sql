@@ -69,10 +69,10 @@ CREATE TABLE IF NOT EXISTS contacts (
 
 INSERT INTO cv_profils (nom_complet, titre, profil, photo_url)
 VALUES (
-    'MALI NDUHIRA Olivier',
+    'Danny Luanda',
     'Informaticien spécialisé en gestion des entreprises',
     'Diplômé en informatique appliquée à la gestion des entreprises, rigoureux, organisé et doté d’une bonne maîtrise des outils numériques. Je souhaite mettre mes compétences en gestion, bureautique et organisation au service d’un poste en logistique.',
-    'assets/images/olivier.jpg'
+    'assets/images/danny.jpeg'
 ) ON CONFLICT DO NOTHING;
 
 INSERT INTO formations (titre, sous_titre, detail, ordre)
@@ -136,14 +136,14 @@ WHERE NOT EXISTS (SELECT 1 FROM centres_interet c WHERE c.nom = donnees.nom);
 INSERT INTO contacts (type, libelle, valeur, url_action, ordre) VALUES
 ('phone', 'Téléphone 1', '+243 972 495 306', 'tel:+243972495306', 1),
 ('phone', 'Téléphone 2', '+243 973 612 241', 'tel:+243973612241', 2),
-('email', 'E-mail', 'Oliviernduhira@gmail.com', 'mailto:Oliviernduhira@gmail.com', 3),
+('email', 'E-mail', 'dannyluanda93@gmail.com', 'mailto:dannyluanda93@gmail.com', 3),
 ('address', 'Adresse', 'Quartier Kyeshero', 'https://maps.google.com/maps/search/?api=1&query=Kyeshero', 4)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO famille (nom, lien, profession, photo_url) VALUES
-('Evristé Martinez', 'Père', 'Profession à renseigner', 'assets/images/papa.jpeg'),
-('Dorothée Martinez', 'Mère', 'Profession à renseigner', 'assets/images/maman.jpeg'),
-('MALI NDUHIRA Olivier', 'Moi', 'Informaticien', 'assets/images/olivier.jpg'),
-('Sandrine Martinez', 'Sœur', 'Profession à renseigner', 'assets/images/sandrine.jpeg'),
-('Martinez', 'Frère', 'Profession à renseigner', 'assets/images/martinez.jpeg')
+('Evristé Martinez', 'Père', 'Profession à renseigner', 'assets/images/fabrice.jpeg'),
+('Dorothée Martinez', 'Mère', 'Profession à renseigner', 'assets/images/grace.jpeg'),
+('Danny Luanda', 'Moi', 'Informaticien', 'assets/images/danny.jpeg'),
+('Olive', 'Sœur', 'Profession à renseigner', 'assets/images/olive.jpeg'),
+('Fabrice', 'Frère', 'Profession à renseigner', 'assets/images/fabrice.jpeg')
 ON CONFLICT DO NOTHING;

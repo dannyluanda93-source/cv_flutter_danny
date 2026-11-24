@@ -14,16 +14,65 @@ class CvApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const primary = Color(0xFF18766A);
+    const secondary = Color(0xFFE6A65D);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CV MALI NDUHIRA Olivier',
+      title: 'CV Danny Luanda',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3F51B5)),
-        scaffoldBackgroundColor: const Color(0xFFF5F7FB),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: primary,
+          primary: primary,
+          secondary: secondary,
+          surface: const Color(0xFFF7F8F3),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF7F8F3),
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: -0.8),
+          headlineMedium: TextStyle(fontWeight: FontWeight.w800, letterSpacing: -0.5),
+          titleLarge: TextStyle(fontWeight: FontWeight.w800),
+        ),
         cardTheme: CardThemeData(
           elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          color: Colors.white,
+          margin: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+            side: const BorderSide(color: Color(0xFFE7EBE5)),
+          ),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFF7F8F3),
+          foregroundColor: Color(0xFF17362F),
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          centerTitle: false,
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color(0xFFF4F7F2),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Color(0xFFE1E7DE)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: primary, width: 1.5),
+          ),
+        ),
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            backgroundColor: primary,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            textStyle: const TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       home: const AuthGate(),

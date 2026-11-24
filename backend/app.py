@@ -55,6 +55,8 @@ def login():
                 (email,),
             )
             user = cursor.fetchone()
+    except Exception as e:
+        return jsonify({"error": "Service indisponible"}), 503
     finally:
         connection.close()
 
@@ -87,7 +89,11 @@ def login():
 @app.get("/api/famille")
 @token_required
 def get_famille(payload):
-    connection = get_db()
+    try:
+        connection = get_db()
+    except Exception:
+        return jsonify({"error": "Service indisponible: base de données inaccessible"}), 503
+
     try:
         with connection.cursor() as cursor:
             cursor.execute(
