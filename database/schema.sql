@@ -109,10 +109,9 @@ INSERT INTO competences (categorie, nom, ordre) VALUES
 ('Technique', 'Programmation Mobile', 7),
 ('Technique', 'Gestion des stocks', 8),
 ('Technique', 'Inventaires', 9),
-('Professionnelle', 'Rédaction de rapports', 10),
-('Professionnelle', 'Organisation', 11),
-('Professionnelle', 'Rigueur', 12),
-('Professionnelle', 'Travail en équipe', 13)
+('Professionnelle', 'Organisation', 10),
+('Professionnelle', 'Rigueur', 11),
+('Professionnelle', 'Travail en équipe', 12)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO langues (nom, niveau)
@@ -128,8 +127,7 @@ SELECT nom FROM (VALUES
     ('Logistique'),
     ('Gestion'),
     ('Bureautique'),
-    ('Organisation'),
-    ('Technologie')
+    ('Organisation')
 ) AS donnees(nom)
 WHERE NOT EXISTS (SELECT 1 FROM centres_interet c WHERE c.nom = donnees.nom);
 
@@ -140,10 +138,9 @@ INSERT INTO contacts (type, libelle, valeur, url_action, ordre) VALUES
 ('address', 'Adresse', 'Quartier Kyeshero', 'https://maps.google.com/maps/search/?api=1&query=Kyeshero', 4)
 ON CONFLICT DO NOTHING;
 
+DELETE FROM famille;
 INSERT INTO famille (nom, lien, profession, photo_url) VALUES
-('Evristé Martinez', 'Père', 'Profession à renseigner', 'assets/images/fabrice.jpeg'),
-('Dorothée Martinez', 'Mère', 'Profession à renseigner', 'assets/images/grace.jpeg'),
 ('Danny Luanda', 'Moi', 'Informaticien', 'assets/images/danny.jpeg'),
 ('Olive', 'Sœur', 'Profession à renseigner', 'assets/images/olive.jpeg'),
-('Fabrice', 'Frère', 'Profession à renseigner', 'assets/images/fabrice.jpeg')
-ON CONFLICT DO NOTHING;
+('Fabrice', 'Frère', 'Profession à renseigner', 'assets/images/fabrice.jpeg'),
+('Grace', 'Sœur', 'Profession à renseigner', 'assets/images/grace.jpeg');
