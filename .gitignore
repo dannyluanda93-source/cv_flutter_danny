@@ -1,0 +1,22 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+coverage/
+flutter_*.png
+pubspec.lock
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Android
+android/.gradle/
+android/local.properties
+
+# Windows
+windows/flutter/ephemeral/
+
+# macOS/Linux
+.DS_Store
